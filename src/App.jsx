@@ -18,7 +18,7 @@ export default function App() {
       <Header />
       <main id="site-content" tabIndex={-1}>
         <Hero {...hero} />
-        <TextBlock {...intro} as="h1" intro />
+        <TextBlock {...intro} intro />
         {sections.map(({ type, ...props }, i) => {
           const Block = blocks[type];
           return <Block key={i} {...props} />;

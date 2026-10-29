@@ -35,6 +35,7 @@ export const moreMenu = {
 
 export const hero = {
   title: 'Ableton',
+  subtitle: 'Software, hardware and lessons for making music. Berlin, since 1999.',
   image: { ...px(7088370, 1600, 1036), alt: 'A musician playing a keyboard in a sunlit studio full of gear' },
 };
 
@@ -111,7 +112,8 @@ export const sections = [
 ];
 
 export const cta = {
-  heading: 'We’re proud of what we’ve built so far, and there’s much more to come. If you’d like to be part of it, come join us.',
+  heading: 'There’s much more to come. Join us.',
+  body: 'We’re proud of what we’ve built so far. If you’d like to help build what’s next, we’d love to hear from you.',
   link: { label: 'See job openings', href: '#' },
   image: { ...px(27007092, 1224, 1224), alt: 'A hand on a music production controller' },
 };

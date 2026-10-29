@@ -24,12 +24,15 @@ export function Photo({ image, className, sizes = '100vw', priority = false }) {
   );
 }
 
-export function Hero({ title, image }) {
+export function Hero({ title, subtitle, image }) {
   return (
     <section className={s.hero}>
       <div className={s.heroFrame}>
         <Photo image={image} className={s.heroImg} sizes="(min-width: 1440px) 1174px, 82vw" priority />
-        <p className={s.heroTitle}>{title}</p>
+        <div className={s.heroText}>
+          <h1 className={s.heroTitle}>{title}</h1>
+          {subtitle && <p className={s.heroSub}>{subtitle}</p>}
+        </div>
       </div>
     </section>
   );
@@ -86,13 +89,14 @@ export function Wide({ image }) {
   );
 }
 
-export function Cta({ heading, link, image }) {
+export function Cta({ heading, body, link, image }) {
   return (
     <section className={s.cta}>
       <div className={cx(s.container, s.grid)}>
         <Photo image={image} className={s.ctaImg} sizes="(min-width: 768px) 612px, 100vw" />
         <div className={s.ctaCard}>
           <h2 className={s.ctaHeading}>{heading}</h2>
+          {body && <p className={s.ctaBody}>{body}</p>}
           <a href={link.href} className={s.ctaLink}>{link.label}</a>
         </div>
       </div>

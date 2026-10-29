@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   height: var(--nav-h);
-  padding-inline: 20px clamp(20px, 2.4vw, 35px);
+  padding-inline: var(--gutter);
 }
 
 .logo {
@@ -100,13 +100,13 @@
   animation: panelIn 220ms var(--ease-out);
 }
 
-.morePanel { padding: 28px 20px 40px; }
+.morePanel { padding: 28px var(--gutter) 40px; }
 
 .mobilePanel {
   height: calc(100dvh - var(--nav-h));
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 24px 20px 48px;
+  padding: 24px var(--gutter) 48px;
 }
 
 .mobileList { margin-bottom: 20px; }
@@ -133,7 +133,7 @@
   align-items: center;
   gap: clamp(20px, 2.8vw, 40px);
   height: 100%;
-  padding-inline: clamp(18px, 2.8vw, 40px);
+  padding-inline: var(--gutter);
   white-space: nowrap;
 }
 
