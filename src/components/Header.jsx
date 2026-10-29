@@ -36,8 +36,12 @@ export default function Header() {
 
   // The mobile menu covers the page, so the page shouldn't scroll behind it.
   useEffect(() => {
-    document.documentElement.style.overflow = open === 'mobile' ? 'hidden' : '';
-  }, [open]);
+    const modal = open === 'mobile';
+    document.documentElement.style.overflow = modal ? 'hidden' : '';
+    // The mobile menu covers the page: make what's behind it unreachable by Tab and screen readers.
+    for (const el of document.querySelectorAll('main, footer')) el.inert = modal;
+    if (modal) headerRef.current?.querySelector(`[id="${mobileId}"] a`)?.focus();
+  }, [open, mobileId]);
 
   // Sticky second bar: scrolling down tucks the main bar away and leaves the
   // sub-nav pinned; any scroll up brings the main bar back.

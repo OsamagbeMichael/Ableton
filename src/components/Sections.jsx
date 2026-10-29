@@ -65,7 +65,7 @@ export function Split({ tone, layout, images: [a, b] }) {
 export function VideoPod({ caption, href, image }) {
   return (
     <section className={s.media}>
-      <a href={href} target="_blank" rel="noreferrer" className={cx(s.measure, s.video)}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cx(s.measure, s.video)}>
         <span className={s.videoFrame}>
           <Photo image={image} className={s.videoImg} sizes="(min-width: 768px) 667px, 100vw" />
           <span className={s.play} aria-hidden="true">
