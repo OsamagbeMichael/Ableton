@@ -1,0 +1,188 @@
+/* ── Shared layout ────────────────────────────────────────────── */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin-inline: auto;
+}
+
+/* 12-column grid (78px columns + 24px gutters at 1200px) */
+.grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+  }
+}
+
+.measure {
+  display: block;
+  width: min(100% - 60px, var(--measure));
+  margin-inline: auto;
+}
+
+.photo {
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 500ms var(--ease-out);
+}
+.photo[data-loaded='true'] { opacity: 1; }
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero { padding: 0 clamp(30px, 9.26vw, 133px) clamp(0px, 2.7vw, 39px); }
+
+.heroFrame {
+  position: relative;
+  background: #030512;
+}
+.heroImg {
+  aspect-ratio: 509 / 742;
+  max-height: 760px;
+}
+@media (min-width: 768px) {
+  .heroImg { aspect-ratio: 1173 / 760; }
+}
+
+.heroTitle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: clamp(60px, 8.33vw, 120px);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 30px rgb(0 0 0 / 0.25);
+}
+
+/* ── Text sections ────────────────────────────────────────────── */
+.text { padding-block: var(--section-y); }
+.flush { padding-top: 0; }
+.intro { padding-top: clamp(40px, 5.4vw, 78px); }
+
+.heading {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.body {
+  font-size: 16px;
+  line-height: 24px;
+}
+@media (min-width: 1024px) {
+  .heading { font-size: 30px; line-height: 42px; }
+  .body { font-size: 20px; line-height: 30px; }
+}
+
+/* ── Colour-block split sections ──────────────────────────────── */
+.split {
+  padding-block: 50px;
+  overflow-x: clip;
+}
+@media (min-width: 768px) {
+  .split { padding-block: var(--section-y); }
+}
+.purple { background: var(--c-purple); }
+.blue { background: var(--c-blue); }
+.green { background: var(--c-green); }
+
+.layoutA .splitA { aspect-ratio: 1; }
+.layoutA .splitB { aspect-ratio: 4 / 3; }
+.layoutB .splitA { aspect-ratio: 4 / 3; }
+.layoutB .splitB { aspect-ratio: 3 / 2; }
+.layoutC .splitA { aspect-ratio: 3 / 2; }
+.layoutC .splitB { aspect-ratio: 1; }
+
+@media (min-width: 768px) {
+  .splitA { grid-column: 1 / 7; }
+  .splitB { grid-column: 8 / 13; }
+  .layoutC .splitA { grid-column: 1 / 6; }
+  /* Square bleeds off the right edge of the viewport */
+  .layoutC .splitB {
+    grid-column: 8 / 13;
+    width: calc(100% + (100vw - min(100vw - 2 * var(--gutter), var(--container))) / 2);
+    max-width: none;
+  }
+}
+
+/* ── Video + wide image ───────────────────────────────────────── */
+.media { padding-bottom: clamp(40px, 4.2vw, 60px); }
+
+.video { color: var(--c-link); }
+.videoFrame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #111;
+}
+.videoImg {
+  aspect-ratio: 16 / 9;
+  transition: opacity 500ms var(--ease-out), transform 600ms var(--ease-out);
+}
+.video:hover .videoImg { transform: scale(1.02); }
+
+.play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  padding-left: 5px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.92);
+  color: var(--c-ink);
+  transition: transform 200ms var(--ease-out);
+}
+.video:hover .play { transform: scale(1.06); }
+.video:active .play { transform: scale(0.97); }
+
+.caption {
+  display: block;
+  margin-top: 12px;
+  font-size: 18px;
+  line-height: 28px;
+}
+.video:hover .caption { text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width: 1024px) {
+  .caption { font-size: 20px; }
+}
+
+.wideImg { aspect-ratio: 3 / 2; }
+
+/* ── Closing call to action ───────────────────────────────────── */
+.cta { padding: clamp(40px, 4.2vw, 60px) 0 var(--section-y); }
+
+.ctaImg { aspect-ratio: 1; }
+
+.ctaCard {
+  background: var(--c-yellow);
+  padding: 40px 30px;
+}
+.ctaHeading {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.ctaLink {
+  color: var(--c-link);
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+}
+.ctaLink:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+@media (min-width: 768px) {
+  .ctaImg { grid-column: 1 / 7; }
+  .ctaCard { grid-column: 7 / 13; padding: 60px 48px; }
+}
+@media (min-width: 1024px) {
+  .ctaHeading, .ctaLink { font-size: 30px; line-height: 42px; }
+}
