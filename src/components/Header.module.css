@@ -126,6 +126,10 @@
   scrollbar-width: none;
 }
 .subnav::-webkit-scrollbar { display: none; }
+@media (max-width: 767px) {
+  .subnav { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  [dir='rtl'] .subnav { mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
+}
 
 .subList {
   display: flex;

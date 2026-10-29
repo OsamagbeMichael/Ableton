@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { footer } from '../data/content.js';
+import { content } from '../data/index.js';
 import s from './Footer.module.css';
 
 function LinkList({ items, className }) {
@@ -69,6 +69,7 @@ function BackToTop() {
 }
 
 export default function Footer() {
+  const { footer } = content;
   const year = new Date().getFullYear();
   return (
     <footer className={s.footer} id="site-footer">
@@ -85,10 +86,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className={s.col}>
-            <h2 className={s.colHeading}>Education</h2>
-            <LinkList items={footer.education} className={s.list} />
-          </div>
+          {footer.education.length > 0 && (
+            <div className={s.col}>
+              <h2 className={s.colHeading}>Education</h2>
+              <LinkList items={footer.education} className={s.list} />
+            </div>
+          )}
 
           <div className={s.col}>
             <Newsletter />

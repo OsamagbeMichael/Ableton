@@ -7,6 +7,7 @@
 /* 12-column grid (78px columns + 24px gutters at 1200px) */
 .grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 40px;
   align-items: center;
 }
@@ -30,6 +31,7 @@
   transition: opacity 300ms var(--ease-out);
 }
 .photo[data-loaded='true'] { opacity: 1; }
+.photo { color: var(--c-ink-2); font-size: 14px; }
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .hero { padding: 0 var(--gutter) clamp(0px, 2.7vw, 39px); }

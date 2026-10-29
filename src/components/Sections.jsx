@@ -20,6 +20,7 @@ export function Photo({ image, className, sizes = '100vw', priority = false }) {
       decoding="async"
       data-loaded={loaded}
       onLoad={() => setLoaded(true)}
+      onError={() => setLoaded(true)}
     />
   );
 }

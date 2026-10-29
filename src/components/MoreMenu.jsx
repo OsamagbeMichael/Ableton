@@ -1,9 +1,9 @@
-import { moreMenu } from '../data/content.js';
+import { content } from '../data/index.js';
 import s from './MoreMenu.module.css';
 
 // Content of the "More +" mega-menu. `stacked` lays it out for the mobile panel.
 export default function MoreMenu({ stacked = false }) {
-  const { site, apps } = moreMenu;
+  const { site, apps } = content.moreMenu;
   return (
     <div className={stacked ? `${s.menu} ${s.stacked}` : s.menu}>
       <section aria-label={site.heading}>

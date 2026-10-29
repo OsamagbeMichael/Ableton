@@ -1,10 +1,11 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { mainNav, subNav } from '../data/content.js';
+import { content } from '../data/index.js';
 import MoreMenu from './MoreMenu.jsx';
 import s from './Header.module.css';
 
 // One open panel at a time: 'more' (desktop mega-menu), 'mobile' (Menu ▾), or null.
 export default function Header() {
+  const { mainNav, subNav } = content;
   const [open, setOpen] = useState(null);
   const headerRef = useRef(null);
   const triggerRef = useRef(null);

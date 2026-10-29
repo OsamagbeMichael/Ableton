@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Practice recreation of a music-software company's About page (frontendpractice.com). Not affiliated with Ableton.",
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

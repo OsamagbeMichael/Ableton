@@ -1,7 +1,7 @@
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import { Hero, TextBlock, Split, VideoPod, Wide, Cta } from './components/Sections.jsx';
-import { hero, intro, sections, cta } from './data/content.js';
+import { content } from './data/index.js';
 
 const blocks = {
   text: TextBlock,
@@ -11,6 +11,7 @@ const blocks = {
 };
 
 export default function App() {
+  const { hero, intro, sections, cta } = content;
   return (
     <>
       <a href="#site-content" className="skip-link">Skip to main content</a>

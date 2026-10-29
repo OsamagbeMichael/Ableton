@@ -44,6 +44,7 @@ body {
   background: var(--c-bg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
 }
 img, video, svg { display: block; max-width: 100%; }
 img { height: auto; background: #e9e9e9; }
