@@ -67,7 +67,7 @@ export const sections = [
   },
   {
     type: 'text',
-    flush: true,
+    spacing: 'flush',
     heading: 'Founded in 1999 by the people who still run it today.',
     body: 'We’ve grown to more than 350 people building instruments, software and learning tools. Our rhythms have changed over the years, but one thing hasn’t: we’re in it for the long run. We want to make products people can rely on for years of creative work, and to support them along the way.',
   },
@@ -91,7 +91,7 @@ export const sections = [
   },
   {
     type: 'text',
-    flush: true,
+    spacing: 'flush',
     heading: 'We help our people grow.',
     body: 'Everyone gets the resources to do their best work and keep developing. Alongside internal and external training, we offer long-term mentoring and coaching, plus regular salons on development, design and music where people share new techniques and ideas.',
   },

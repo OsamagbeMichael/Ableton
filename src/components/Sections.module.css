@@ -235,3 +235,6 @@
     }
   }
 }
+
+/* rendering-content-visibility: below-the-fold sections skip layout and paint until near the viewport */
+.split, .media, .cta { content-visibility: auto; contain-intrinsic-size: auto 900px; }

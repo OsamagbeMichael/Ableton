@@ -1,4 +1,6 @@
 .footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
   border-top: 2px solid var(--c-rule);
   color: var(--c-ink-2);
 }

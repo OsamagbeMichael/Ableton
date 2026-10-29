@@ -1,11 +1,11 @@
 import { content } from '../data/index.js';
 import s from './MoreMenu.module.css';
 
-// Content of the "More +" mega-menu. `stacked` lays it out for the mobile panel.
-export default function MoreMenu({ stacked = false }) {
+// Content of the "More +" mega-menu. layout: "row" (desktop panel) | "stacked" (mobile panel).
+export default function MoreMenu({ layout = 'row' }) {
   const { site, apps } = content.moreMenu;
   return (
-    <div className={stacked ? `${s.menu} ${s.stacked}` : s.menu}>
+    <div className={layout === 'stacked' ? `${s.menu} ${s.stacked}` : s.menu}>
       <section aria-label={site.heading}>
         <h2 className={s.heading}>{site.heading}</h2>
         <ul className={s.siteList}>

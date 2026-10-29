@@ -134,7 +134,7 @@ export default function Header() {
             </ul>
           </nav>
           <a href="#" className={`${s.trial} ${s.mobileTrial}`} translate="no">Try Live 12 for Free</a>
-          <MoreMenu stacked />
+          <MoreMenu layout="stacked" />
         </div>
       )}
 

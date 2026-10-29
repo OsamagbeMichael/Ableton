@@ -39,9 +39,10 @@ export function Hero({ title, subtitle, image }) {
   );
 }
 
-export function TextBlock({ heading, body, as: H = 'h2', flush, intro }) {
+// spacing: 'default' | 'intro' (tight under the hero) | 'flush' (no top padding after media)
+export function TextBlock({ heading, body, as: H = 'h2', spacing = 'default' }) {
   return (
-    <section className={cx(s.text, flush && s.flush, intro && s.intro)}>
+    <section className={cx(s.text, spacing === 'flush' && s.flush, spacing === 'intro' && s.intro)}>
       <div className={s.measure}>
         <H className={s.heading}>{heading}</H>
         <p className={s.body}>{body}</p>
