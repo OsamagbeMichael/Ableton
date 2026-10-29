@@ -84,7 +84,7 @@
   border: 0;
   background: var(--c-field);
 }
-.field::placeholder { color: #767676; }
+.field::placeholder { color: #595959; }
 .submit {
   height: 44px;
   padding: 0 20px;
