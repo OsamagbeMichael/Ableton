@@ -43,6 +43,8 @@
 }
 
 .link {
+  display: inline-block;
+  padding-block: 2px;
   color: var(--c-ink);
   transition: color 150ms ease;
 }
@@ -64,7 +66,9 @@
 }
 .socialLink {
   display: inline-block;
+  min-width: 24px;
   padding-block: 6px;
+  text-align: center;
   color: var(--c-ink);
   text-decoration: underline;
   text-decoration-color: var(--c-rule);
@@ -122,7 +126,7 @@
   font-size: 14px;
   line-height: 20px;
 }
-.legalLink { color: var(--c-ink); font-weight: 700; }
+.legalLink { display: inline-block; padding-block: 4px; color: var(--c-ink); font-weight: 700; }
 .legalLink:hover { color: var(--c-orange-text); }
 .meta { color: var(--c-ink-2); }
 

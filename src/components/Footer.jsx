@@ -34,10 +34,10 @@ function Newsletter() {
           required
           autoComplete="email"
           spellCheck={false}
-          placeholder="you@example.com"
+          placeholder="you@example.com…"
           className={s.field}
         />
-        <button type="submit" className={s.submit}>Sign up</button>
+        <button type="submit" className={s.submit}>Sign Up</button>
       </div>
       <p className={s.status} aria-live="polite">{status}</p>
     </form>
@@ -71,7 +71,7 @@ export default function Footer() {
   return (
     <footer className={s.footer} id="site-footer">
       <div className={s.inner}>
-        <a href="#" className={s.logo} aria-label="Ableton home">Ableton</a>
+        <a href="#" className={s.logo} aria-label="Ableton home" translate="no">Ableton</a>
 
         <div className={s.grid}>
           <div className={s.col}>

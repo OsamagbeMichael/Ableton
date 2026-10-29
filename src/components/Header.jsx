@@ -71,7 +71,7 @@ export default function Header() {
   return (
     <header ref={headerRef} className={s.header} data-tucked={tucked && !open}>
       <div className={s.bar}>
-        <a href="#" className={s.logo} aria-label="Ableton home">
+        <a href="#" className={s.logo} aria-label="Ableton home" translate="no">
           Ableton
         </a>
 
@@ -92,7 +92,7 @@ export default function Header() {
           <ul className={s.mainList}>
             {mainNav.map((item) => (
               <li key={item.label}>
-                <a href={item.href} className={s.mainLink}>{item.label}</a>
+                <a href={item.href} className={s.mainLink} translate="no">{item.label}</a>
               </li>
             ))}
             <li>
@@ -110,7 +110,7 @@ export default function Header() {
         </nav>
 
         <div className={s.actions}>
-          <a href="#" className={s.trial}>Try Live 12 for free</a>
+          <a href="#" className={s.trial} translate="no">Try Live 12 for Free</a>
           <a href="#" className={s.login}>Log in or register</a>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function Header() {
               ))}
             </ul>
           </nav>
-          <a href="#" className={`${s.trial} ${s.mobileTrial}`}>Try Live 12 for free</a>
+          <a href="#" className={`${s.trial} ${s.mobileTrial}`} translate="no">Try Live 12 for Free</a>
           <MoreMenu stacked />
         </div>
       )}

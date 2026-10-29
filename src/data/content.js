@@ -114,7 +114,7 @@ export const sections = [
 export const cta = {
   heading: 'There’s much more to come. Join us.',
   body: 'We’re proud of what we’ve built so far. If you’d like to help build what’s next, we’d love to hear from you.',
-  link: { label: 'See job openings', href: '#' },
+  link: { label: 'See Job Openings', href: '#' },
   image: { ...px(27007092, 1224, 1224), alt: 'A hand on a music production controller' },
 };
 

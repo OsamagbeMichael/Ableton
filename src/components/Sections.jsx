@@ -30,7 +30,7 @@ export function Hero({ title, subtitle, image }) {
       <div className={s.heroFrame}>
         <Photo image={image} className={s.heroImg} sizes="(min-width: 1440px) 1174px, 82vw" priority />
         <div className={s.heroText}>
-          <h1 className={s.heroTitle}>{title}</h1>
+          <h1 className={s.heroTitle} translate="no">{title}</h1>
           {subtitle && <p className={s.heroSub}>{subtitle}</p>}
         </div>
       </div>
