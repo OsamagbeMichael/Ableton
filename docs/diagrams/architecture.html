@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ableton About · Architecture</title>
+<!-- diagram-design · architecture type · style guide customised from DESIGN.md (option c: local design system):
+     paper #ffffff, ink #000000, muted #333333, accent (coral role) #c93c0f, link role #0000ff, sans Jost -->
+<style>
+  @font-face{font-family:'Jost Variable';font-weight:100 900;src:url(../../node_modules/@fontsource-variable/jost/files/jost-latin-wght-normal.woff2) format('woff2-variations');}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--paper:#fff;--ink:#000;--muted:#333;--accent:#c93c0f;--font-sans:'Jost Variable',Jost,system-ui,sans-serif;--font-mono:ui-monospace,'SF Mono',Menlo,monospace}
+  body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);display:flex;justify-content:center;padding:3rem 2rem}
+  .frame{max-width:1000px;width:100%}
+  .eyebrow{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+  h1{font-size:2rem;font-weight:500;letter-spacing:-.02em;margin-bottom:1.5rem}
+  svg{width:100%;min-width:860px;display:block}
+  .note{margin-top:1rem;font-size:.95rem;color:var(--muted);max-width:62ch}
+</style>
+</head>
+<body>
+<div class="frame">
+<p class="eyebrow">Architecture · diagram-design</p>
+<h1>Every component reads content through one boundary</h1>
+<svg viewBox="0 0 920 456" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">Ableton About page architecture</title>
+  <desc id="d">content.js and, in dev only, worst.js feed the data boundary src/data/index.js, which App.jsx reads. App renders Header, Sections, Footer and BackToTop; BackToTop sits outside the footer. Design tokens in global.css style every component.</desc>
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".9" fill="rgba(0,0,0,.08)"/></pattern>
+    <marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#333"/></marker>
+    <marker id="aa" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c93c0f"/></marker>
+    <marker id="al" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#0000ff"/></marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#fff"/><rect width="100%" height="100%" fill="url(#dots)" opacity=".55"/>
+
+  <!-- zone: React tree -->
+  <rect x="456" y="24" width="448" height="384" rx="8" fill="rgba(0,0,0,.015)" stroke="rgba(0,0,0,.10)" stroke-width=".8"/>
+  <rect x="476" y="28" width="72" height="12" rx="2" fill="#fff"/>
+  <text x="512" y="37" fill="rgba(0,0,0,.45)" font-size="7" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".14em">REACT TREE</text>
+
+  <!-- arrows first -->
+  <path d="M184,152 H208 Q216,152 216,160 V212 Q216,220 224,220 H248" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+  <path d="M184,312 H208 Q216,312 216,304 V252 Q216,244 224,244 H248" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#a)"/>
+  <line x1="408" y1="232" x2="472" y2="232" stroke="#c93c0f" stroke-width="1.4" marker-end="url(#aa)"/>
+  <path d="M616,212 H632 Q640,212 640,204 V80 Q640,72 648,72 H704" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+  <path d="M616,224 H648 Q656,224 656,216 V176 Q656,168 664,168 H704" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+  <path d="M616,240 H648 Q656,240 656,248 V256 Q656,264 664,264 H704" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+  <path d="M616,252 H632 Q640,252 640,260 V352 Q640,360 648,360 H704" fill="none" stroke="#c93c0f" stroke-width="1.4" marker-end="url(#aa)"/>
+  <path d="M408,368 H536 Q544,368 544,360 V268" fill="none" stroke="#0000ff" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#al)"/>
+
+  <!-- labels on masks -->
+  <rect x="96" y="132" width="52" height="12" rx="2" fill="#fff"/><text x="122" y="141" fill="#333" font-size="8" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">IMPORT</text>
+  <rect x="88" y="292" width="68" height="12" rx="2" fill="#fff"/><text x="122" y="301" fill="#333" font-size="8" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">DEV ONLY</text>
+  <rect x="412" y="212" width="56" height="12" rx="2" fill="#fff"/><text x="440" y="221" fill="#c93c0f" font-size="8" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">CONTENT</text>
+  <rect x="436" y="374" width="68" height="12" rx="2" fill="#fff"/><text x="470" y="383" fill="#0000ff" font-size="8" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">CSS VARS</text>
+
+  <!-- nodes -->
+  <g font-family="'Jost Variable',Jost,sans-serif">
+  <rect x="40" y="120" width="144" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="1"/>
+  <rect x="48" y="128" width="32" height="12" rx="2" fill="none" stroke="rgba(0,0,0,.4)" stroke-width=".8"/><text x="64" y="137" font-size="7" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">DATA</text>
+  <text x="112" y="158" font-size="13" font-weight="600" text-anchor="middle">content.js</text><text x="112" y="174" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">copy · images</text>
+
+  <rect x="40" y="280" width="144" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="48" y="288" width="28" height="12" rx="2" fill="none" stroke="rgba(0,0,0,.4)" stroke-width=".8"/><text x="62" y="297" font-size="7" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">DEV</text>
+  <text x="112" y="318" font-size="13" font-weight="600" text-anchor="middle">worst.js</text><text x="112" y="334" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">break-ui fixtures</text>
+
+  <rect x="248" y="200" width="160" height="64" rx="6" fill="#fff"/>
+  <rect x="248" y="200" width="160" height="64" rx="6" fill="rgba(201,60,15,.07)" stroke="#c93c0f" stroke-width="1"/>
+  <rect x="256" y="208" width="40" height="12" rx="2" fill="none" stroke="rgba(201,60,15,.5)" stroke-width=".8"/><text x="276" y="217" fill="#c93c0f" font-size="7" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">BOUND</text>
+  <text x="328" y="238" font-size="13" font-weight="600" text-anchor="middle">data/index.js</text><text x="328" y="254" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">one import point</text>
+
+  <rect x="472" y="200" width="144" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="1"/>
+  <rect x="480" y="208" width="28" height="12" rx="2" fill="none" stroke="rgba(0,0,0,.4)" stroke-width=".8"/><text x="494" y="217" font-size="7" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">ROOT</text>
+  <text x="544" y="238" font-size="13" font-weight="600" text-anchor="middle">App.jsx</text><text x="544" y="254" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">composes the page</text>
+
+  <rect x="704" y="40" width="180" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="1"/>
+  <text x="794" y="68" font-size="13" font-weight="600" text-anchor="middle">Header</text><text x="794" y="84" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">bar · sub-nav · menus</text>
+  <rect x="704" y="136" width="180" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="1"/>
+  <text x="794" y="164" font-size="13" font-weight="600" text-anchor="middle">Sections</text><text x="794" y="180" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">hero · text · split · cta</text>
+  <rect x="704" y="232" width="180" height="64" rx="6" fill="#fff" stroke="#000" stroke-width="1"/>
+  <text x="794" y="260" font-size="13" font-weight="600" text-anchor="middle">Footer</text><text x="794" y="276" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">content-visibility: auto</text>
+  <rect x="704" y="328" width="180" height="64" rx="6" fill="#fff"/>
+  <rect x="704" y="328" width="180" height="64" rx="6" fill="rgba(201,60,15,.07)" stroke="#c93c0f" stroke-width="1"/>
+  <text x="794" y="356" font-size="13" font-weight="600" text-anchor="middle">BackToTop</text><text x="794" y="372" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">fixed · outside footer</text>
+
+  <rect x="248" y="336" width="160" height="64" rx="6" fill="#fff" stroke="#0000ff" stroke-width="1"/>
+  <rect x="256" y="344" width="36" height="12" rx="2" fill="none" stroke="rgba(0,0,255,.45)" stroke-width=".8"/><text x="274" y="353" fill="#0000ff" font-size="7" font-family="ui-monospace,monospace" text-anchor="middle" letter-spacing=".08em">STYLE</text>
+  <text x="328" y="374" font-size="13" font-weight="600" text-anchor="middle">global.css</text><text x="328" y="390" fill="#333" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">tokens (DESIGN.md)</text>
+  </g>
+
+  <!-- legend -->
+  <line x1="40" y1="420" x2="900" y2="420" stroke="rgba(0,0,0,.10)" stroke-width=".8"/>
+  <g font-size="8.5" fill="#333" font-family="'Jost Variable',Jost,sans-serif">
+    <text x="40" y="440" font-family="ui-monospace,monospace" font-size="8" letter-spacing=".18em">LEGEND</text>
+    <rect x="112" y="432" width="14" height="10" rx="2" fill="rgba(201,60,15,.07)" stroke="#c93c0f"/><text x="132" y="440">Focal (ADR-backed)</text>
+    <rect x="248" y="432" width="14" height="10" rx="2" fill="#fff" stroke="#000" stroke-dasharray="3,2"/><text x="268" y="440">Dev-only</text>
+    <line x1="340" y1="437" x2="364" y2="437" stroke="#0000ff" stroke-dasharray="5,4"/><text x="372" y="440">Styling dependency</text>
+  </g>
+</svg>
+<p class="note">Fixed UI renders beside &lt;footer&gt;, not inside it: content-visibility makes the footer the containing block for position: fixed (ADR 0002).</p>
+</div>
+</body>
+</html>

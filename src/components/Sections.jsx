@@ -100,6 +100,7 @@ export function Cta({ heading, body, link, image }) {
           <h2 className={s.ctaHeading}>{heading}</h2>
           {body && <p className={s.ctaBody}>{body}</p>}
           <a href={link.href} className={s.ctaLink}>{link.label}</a>
+          <img className={s.ctaArt} src="/illustrations/step-sequencer.svg" alt="" width="1215" height="492" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
