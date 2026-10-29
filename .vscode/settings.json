@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "files.exclude": { "**/.ref": true, "node_modules": true, "dist": true },
+  "css.lint.unknownAtRules": "ignore",
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "npm.packageManager": "npm"
+}
