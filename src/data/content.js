@@ -41,7 +41,7 @@ export const hero = {
 
 export const intro = {
   heading: 'We make software, hardware and learning platforms for music creation and performance.',
-  body: 'People everywhere use them to do remarkable things: filling dance floors, starting scenes, teaching classrooms, or making their very first track.',
+  body: 'People use them to fill dance floors and teach classes. Plenty of them are finishing their first track.',
 };
 
 export const sections = [
@@ -56,8 +56,8 @@ export const sections = [
   },
   {
     type: 'text',
-    heading: 'Making music isn’t always easy. The highs and lows are what make it worth it.',
-    body: 'It comes naturally to some, it’s hard for most, and it means something to everyone who sticks with it. Working here can feel the same way: the flow, the breakthroughs, the sense of building something bigger than ourselves. That’s what we love about the work, and what we hope to give back to the people who make music with our tools.',
+    heading: 'Making music is hard. That’s part of why people keep at it.',
+    body: 'A few people find it easy. Most of us get stuck for weeks, then hear the part that works. Building the tools feels the same, and we try to put that payoff into what you use.',
   },
   {
     type: 'video',
@@ -69,7 +69,7 @@ export const sections = [
     type: 'text',
     spacing: 'flush',
     heading: 'Founded in 1999 by the people who still run it today.',
-    body: 'We’ve grown to more than 350 people building instruments, software and learning tools. Our rhythms have changed over the years, but one thing hasn’t: we’re in it for the long run. We want to make products people can rely on for years of creative work, and to support them along the way.',
+    body: 'More than 350 of us now build the instruments, software and lessons. How we work has changed since 1999. What we aim for hasn’t. We want you to rely on a product for years and get support for as long as you use it.',
   },
   {
     type: 'split',
@@ -82,8 +82,8 @@ export const sections = [
   },
   {
     type: 'text',
-    heading: 'Everyone has something unique to contribute.',
-    body: 'We’re artists and engineers, designers and educators, researchers and producers from more than 30 countries. The best results come from teams that can look at a problem from more than one angle. There’s still a long way to go, and we’re committed to building an inclusive music-making culture from the inside out.',
+    heading: 'Teams work better when they don’t all think alike.',
+    body: 'We come from more than 30 countries. Our teams mix artists with engineers and educators with researchers, because a mixed team catches problems one viewpoint misses. We still have work to do on inclusion, and we start inside the company.',
   },
   {
     type: 'wide',
@@ -93,7 +93,7 @@ export const sections = [
     type: 'text',
     spacing: 'flush',
     heading: 'We help our people grow.',
-    body: 'Everyone gets the resources to do their best work and keep developing. Alongside internal and external training, we offer long-term mentoring and coaching, plus regular salons on development, design and music where people share new techniques and ideas.',
+    body: 'You get time for internal and external training, and a mentor or coach who stays with you for the long term. At our regular salons, colleagues show each other new techniques in development, design and music.',
   },
   {
     type: 'split',
@@ -106,14 +106,14 @@ export const sections = [
   },
   {
     type: 'text',
-    heading: 'We want people to love it here, and we’ll make moving to join us as easy as we can.',
-    body: 'We help with relocation and paperwork where it applies, and new colleagues in Berlin get free German classes. You can expect comprehensive health insurance for you and your family, generous parental leave, and company-wide events and team get-togethers throughout the year.',
+    heading: 'Moving countries for a job is hard. We do most of the paperwork.',
+    body: 'We handle relocation and paperwork where we can. If you join us in Berlin, German classes are free. Health insurance covers your family too, parental leave is part of the package, and the whole company gets together a few times a year.',
   },
 ];
 
 export const cta = {
   heading: 'There’s much more to come. Join us.',
-  body: 'We’re proud of what we’ve built so far. If you’d like to help build what’s next, we’d love to hear from you.',
+  body: 'If you want to help build what comes next, start with the open roles.',
   link: { label: 'See Job Openings', href: '#' },
   image: { ...px(27007092, 1224, 1224), alt: 'A hand on a music production controller' },
 };
