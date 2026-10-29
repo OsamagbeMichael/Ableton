@@ -39,7 +39,9 @@ function Newsletter() {
         />
         <button type="submit" className={s.submit}>Sign Up</button>
       </div>
-      <p className={s.status} aria-live="polite">{status}</p>
+      <p className={s.status} aria-live="polite">
+        {status && <span key={status} className={s.statusText}>{status}</span>}
+      </p>
     </form>
   );
 }

@@ -46,7 +46,7 @@
   display: inline-block;
   padding-block: 2px;
   color: var(--c-ink);
-  transition: color 150ms ease;
+  transition: color 150ms var(--ease-out);
 }
 .link:hover { color: var(--c-orange-text); }
 
@@ -73,7 +73,7 @@
   text-decoration: underline;
   text-decoration-color: var(--c-rule);
   text-underline-offset: 4px;
-  transition: text-decoration-color 150ms ease;
+  transition: text-decoration-color 150ms var(--ease-out);
 }
 .socialLink:hover { text-decoration-color: currentColor; }
 
@@ -95,11 +95,18 @@
   background: var(--c-link);
   color: #fff;
   font-weight: 700;
-  transition: background-color 150ms ease;
+  transition: background-color 150ms var(--ease-out), transform 160ms var(--ease-out);
 }
 .submit:hover { background: #0000c4; }
-.submit:active { transform: scale(0.98); }
+.submit:active { transform: scale(0.97); }
 .status { min-height: 23px; margin-top: 8px; font-size: 14px; color: var(--c-ink); }
+.statusText {
+  display: inline-block;
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+@starting-style {
+  .statusText { opacity: 0; transform: translateY(4px); }
+}
 
 /* Language and location */
 .selects { display: flex; flex-wrap: wrap; gap: 12px 16px; margin-top: 6px; }
@@ -151,7 +158,13 @@
   opacity: 0;
   transform: translateX(8px);
   pointer-events: none;
-  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), background-color 150ms ease;
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), background-color 150ms var(--ease-out);
 }
 .toTop[data-visible='true'] { opacity: 1; transform: none; pointer-events: auto; }
 .toTop:hover { background: rgb(0 0 0 / 0.85); }
+
+@media (prefers-reduced-motion: reduce) {
+  .submit:active { transform: none; }
+  @starting-style { .statusText { transform: none; } }
+  .toTop { transform: none; transition: opacity 150ms linear; }
+}

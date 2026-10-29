@@ -27,7 +27,7 @@
   width: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 500ms var(--ease-out);
+  transition: opacity 300ms var(--ease-out);
 }
 .photo[data-loaded='true'] { opacity: 1; }
 
@@ -72,7 +72,7 @@
   font-size: clamp(60px, 8.33vw, 120px);
   line-height: 1.05;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
 }
 
 .heroSub {
@@ -144,9 +144,7 @@
 }
 .videoImg {
   aspect-ratio: 16 / 9;
-  transition: opacity 500ms var(--ease-out), transform 600ms var(--ease-out);
 }
-.video:hover .videoImg { transform: scale(1.02); }
 
 .play {
   position: absolute;
@@ -162,8 +160,14 @@
   color: var(--c-ink);
   transition: transform 200ms var(--ease-out);
 }
-.video:hover .play { transform: scale(1.06); }
-.video:active .play { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .video:hover .play { transform: scale(1.06); }
+}
+.video:active .play { transform: scale(0.97); transition-duration: 100ms; }
+@media (prefers-reduced-motion: reduce) {
+  .play { transition: none; }
+  .video:hover .play, .video:active .play { transform: none; }
+}
 
 .caption {
   display: block;
@@ -213,4 +217,19 @@
 }
 @media (min-width: 1024px) {
   .ctaHeading, .ctaLink { font-size: 30px; line-height: 42px; }
+}
+
+/* Scroll-driven reveal: photographs rise 24px into place as they enter.
+   CSS-only (no observer, nothing stays hidden if unsupported); off under reduced motion. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .splitA, .splitB, .wideImg, .ctaImg, .videoFrame {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
 }

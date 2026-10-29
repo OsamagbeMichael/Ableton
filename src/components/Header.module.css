@@ -4,9 +4,8 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgb(255 255 255 / 0.95);
-  backdrop-filter: saturate(180%) blur(12px);
-  transition: transform 300ms var(--ease-out);
+  background: rgb(255 255 255 / 0.97);
+  transition: transform 250ms var(--ease-out);
 }
 .header[data-tucked='true'] { transform: translateY(calc(-1 * var(--nav-h))); }
 
@@ -38,7 +37,7 @@
   padding-inline: 11.5px;
   font-size: 20px;
   font-weight: 700;
-  transition: color 150ms ease;
+  transition: color 150ms var(--ease-out);
 }
 .mainLink:hover,
 .mainLink[aria-expanded='true'] { color: var(--c-orange-text); }
@@ -84,9 +83,6 @@
 }
 
 /* ── Panels ───────────────────────────────────────────────────── */
-@keyframes panelIn {
-  from { opacity: 0; transform: translateY(-6px); }
-}
 
 .morePanel,
 .mobilePanel {
@@ -97,7 +93,10 @@
   background: var(--c-bg);
   border-top: 2px solid var(--c-rule);
   box-shadow: 0 24px 40px -24px rgb(0 0 0 / 0.18);
-  animation: panelIn 220ms var(--ease-out);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+@starting-style {
+  .morePanel, .mobilePanel { opacity: 0; transform: translateY(-6px); }
 }
 
 .morePanel { padding: 28px var(--gutter) 40px; }
@@ -142,7 +141,13 @@
   padding-block: 10px;
   font-size: 16px;
   font-weight: 500;
-  transition: color 150ms ease;
+  transition: color 150ms var(--ease-out);
 }
 .subLink:hover,
 .subLink[aria-current='page'] { color: var(--c-orange-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .header, .plus, .caret { transition: none; }
+  .morePanel, .mobilePanel { transition: opacity 150ms linear; }
+  @starting-style { .morePanel, .mobilePanel { transform: none; } }
+}
