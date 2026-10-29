@@ -247,5 +247,14 @@
   }
 }
 
-/* rendering-content-visibility: below-the-fold sections skip layout and paint until near the viewport */
-.split, .media, .cta { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+/* rendering-content-visibility: below-the-fold sections skip layout and paint until near the viewport.
+   Placeholder heights (content box, padding excluded) are measured at 390 / 768 / 1440px so the scrollbar
+   doesn't jump as sections render;
+   'auto' then remembers each section's real size. */
+.split, .cta { content-visibility: auto; }
+.split { contain-intrinsic-size: auto 560px; }
+.cta { contain-intrinsic-size: auto 800px; }
+@media (min-width: 768px) {
+  .split { contain-intrinsic-size: auto 41vw; }
+  .cta { contain-intrinsic-size: auto max(430px, 41vw); }
+}

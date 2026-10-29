@@ -10,3 +10,8 @@ Keep `content-visibility` on `.split`, `.media`, `.cta` and `footer`. Any fixed 
 
 ## Consequences
 New fixed UI must be mounted in `App.jsx`. The rule is recorded in AGENTS.md.
+
+## Addendum: placeholder heights
+The first version used `contain-intrinsic-size: auto 900px` everywhere. Before the sections rendered, the page measured 10,321px. After scrolling it measured 8,667px, so the scrollbar jumped 19% and taste-skill flagged 3 empty screens.
+
+`contain-intrinsic-size` sets the **content box** (padding excluded). Placeholders are now measured per breakpoint, and the jump is ≤1.6% at 1440/1024/768/390px.
