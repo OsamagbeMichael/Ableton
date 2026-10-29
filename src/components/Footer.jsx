@@ -46,7 +46,9 @@ function Newsletter() {
   );
 }
 
-function BackToTop() {
+// Rendered outside <footer>: the footer uses content-visibility, which makes it the
+// containing block for position: fixed descendants and would pin this button to the footer.
+export function BackToTop() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > window.innerHeight);
@@ -135,7 +137,6 @@ export default function Footer() {
           Practice recreation built for frontendpractice.com. Not affiliated with or endorsed by Ableton. Photos from Pexels.
         </p>
       </div>
-      <BackToTop />
     </footer>
   );
 }

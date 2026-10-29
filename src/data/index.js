@@ -5,6 +5,6 @@ import * as demo from './content.js';
 
 export const content = { ...demo };
 
-export function useWorstCase(worst) {
+export function applyWorstCase(worst) {
   Object.assign(content, worst);
 }

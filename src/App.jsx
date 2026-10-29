@@ -1,5 +1,5 @@
 import Header from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
+import Footer, { BackToTop } from './components/Footer.jsx';
 import { Hero, TextBlock, Split, VideoPod, Wide, Cta } from './components/Sections.jsx';
 import { content } from './data/index.js';
 
@@ -27,6 +27,7 @@ export default function App() {
         <Cta {...cta} />
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }
