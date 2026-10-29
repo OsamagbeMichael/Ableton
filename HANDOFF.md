@@ -1,7 +1,7 @@
 # HANDOFF (handoff skill)
 
 **Goal:** a reference-quality About page that exercises the design stack.
-**State:** 13 commits since baseline `097c652`. All checks green: 0 taste FAIL, 0 impeccable findings, 0 small targets, 0 overflow in break-ui, review-animations Approve.
+**State:** 22 commits since baseline `097c652`. All checks green: 0 taste FAIL, 0 impeccable findings, 0 small targets, 0 overflow in break-ui, scroll jump ≤1.6%, review-animations Approve.
 
 ## Touched
 `src/**` (all components), DESIGN.md, AGENTS.md, CONTEXT.md, vercel.json, .claude/ (git guardrails), docs/ (audits, ADRs, spec, issues), plans/.
