@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design stack × Ableton About</title>
+<!-- frontend-slides: speaker-led deck, custom style from the project's DESIGN.md (pastel colour fields + electric blue, Jost) -->
+<style>
+@font-face{font-family:'Jost Variable';font-weight:100 900;src:url(../../node_modules/@fontsource-variable/jost/files/jost-latin-wght-normal.woff2) format('woff2-variations');}
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+:root{--stage-bg:#111;--slide-bg:#fff;--ink:#000;--blue:#0000ff;--purple:#d5b3ff;--sky:#b1c5ff;--mint:#b6ffc0;--lemon:#fbffa7;--orange:#ff764d;
+  --ease:cubic-bezier(0.23,1,0.32,1);--font:'Jost Variable',Jost,'Futura PT',Futura,sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body{font-family:var(--font);color:var(--ink)}
+.slide{padding:120px 140px}
+.slide:not(.s-title):not(.s-break){display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:26px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:150px;line-height:.95;font-weight:500;letter-spacing:-.035em;margin:28px 0 0}
+h2{font-size:84px;line-height:1;font-weight:500;letter-spacing:-.03em;margin:0 0 48px}
+p.lead{font-size:38px;line-height:1.35;max-width:1250px;margin:40px 0 0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 500ms var(--ease),transform 500ms var(--ease)}
+.slide.visible .reveal{opacity:1;transform:none}
+.slide.visible .reveal:nth-child(2){transition-delay:80ms}.slide.visible .reveal:nth-child(3){transition-delay:160ms}.slide.visible .reveal:nth-child(4){transition-delay:240ms}
+/* title */
+.s-title{background:var(--purple);display:flex;flex-direction:column;justify-content:flex-end}
+.s-title .art{position:absolute;right:120px;top:110px;width:620px;opacity:.9}
+/* method */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:20px}
+.step{border-top:4px solid var(--ink);padding-top:28px}
+.step b{display:block;font-size:30px;margin-bottom:12px}.step span{font-size:28px;line-height:1.35}
+.step em{display:block;font-style:normal;font-size:96px;font-weight:500;color:var(--blue);line-height:1;margin-bottom:24px}
+/* scoreboard */
+.s-score{background:var(--lemon)}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 64px}
+.metric .n{font-size:118px;font-weight:500;letter-spacing:-.04em;line-height:1}.metric .n s{text-decoration:none;opacity:.35;font-size:72px;margin-right:18px}
+.metric .l{font-size:28px;margin-top:12px;max-width:420px}.metric .k{font-size:22px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin-top:10px}
+/* before/after */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:40px}.pair figure{margin:0}.pair img{width:100%;max-height:none;border:2px solid #000}
+.pair figcaption{font-size:28px;margin-top:16px;font-weight:600}
+.s-break{background:var(--sky);display:grid;grid-template-columns:900px 1fr;gap:80px;align-items:center}
+.s-break img{width:100%;max-height:820px;object-fit:contain;object-position:left;border:2px solid #000;background:#fff}
+.s-break ul{font-size:34px;line-height:1.45;padding-left:1.1em;margin:0}
+/* next */
+.s-next{background:var(--mint)}
+.s-next ol{font-size:44px;line-height:1.5;padding-left:1.2em;margin:0}.s-next code{font-size:36px;background:#fff;padding:2px 12px}
+.deck-controls{color:#fff;font:600 18px/1 var(--font);letter-spacing:.08em}
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage">
+  <section class="slide s-title active">
+    <img class="art" src="../../public/illustrations/step-sequencer.svg" alt="">
+    <p class="eyebrow reveal">Design stack · test run</p>
+    <h1 class="reveal">83 skills,<br>one About page.</h1>
+    <p class="lead reveal">Every installed skill was run against the Ableton practice build. What follows is what each one caught, what changed, and how to run it yourself.</p>
+  </section>
+  <section class="slide">
+    <h2 class="reveal">The loop for every skill</h2>
+    <div class="steps">
+      <div class="step reveal"><em>01</em><b>Baseline</b><span>Build, screenshot at 1440 and 390, audit.</span></div>
+      <div class="step reveal"><em>02</em><b>Run the skill</b><span>Its own script where it has one: inspect.mjs, impeccable detect, search.py.</span></div>
+      <div class="step reveal"><em>03</em><b>Fix the findings</b><span>One commit per concern, smallest change that works.</span></div>
+      <div class="step reveal"><em>04</em><b>Measure again</b><span>Same tool, same numbers. No number, no claim.</span></div>
+    </div>
+  </section>
+  <section class="slide s-score">
+    <h2 class="reveal">Measured, not felt</h2>
+    <div class="board reveal">
+      <div class="metric"><div class="n"><s>4</s>0</div><div class="l">taste-skill FAIL findings</div><div class="k">design-taste-frontend</div></div>
+      <div class="metric"><div class="n"><s>15</s>0</div><div class="l">links under the 24px target</div><div class="k">web-design-guidelines</div></div>
+      <div class="metric"><div class="n"><s>165</s>0<small style="font-size:48px">px</small></div><div class="l">sideways overflow with worst-case data at 320px</div><div class="k">break-ui</div></div>
+      <div class="metric"><div class="n"><s>119</s>72<small style="font-size:48px">ms</small></div><div class="l">initial layout, 390px, 4× CPU throttle</div><div class="k">react-best-practices</div></div>
+      <div class="metric"><div class="n"><s>24</s>6</div><div class="l">AI-writing tells in the page copy</div><div class="k">humanizer + stop-slop</div></div>
+      <div class="metric"><div class="n"><s>7</s>0</div><div class="l">motion findings, verdict Approve</div><div class="k">review-animations</div></div>
+    </div>
+  </section>
+  <section class="slide">
+    <h2 class="reveal">The first screen now says what this is</h2>
+    <div class="pair reveal">
+      <figure><img src="img/taste-before.jpg" alt="Before: hero with the name only, h1 further down the page"><figcaption>Before: name only, h1 1011px down, text-shadow</figcaption></figure>
+      <figure><img src="img/taste-after.jpg" alt="After: hero with h1 and a plain-words subtitle"><figcaption>After: h1 + plain-words subtitle, scrim, one pair of margins</figcaption></figure>
+    </div>
+  </section>
+  <section class="slide s-break">
+    <img class="reveal" src="img/breakui-320.jpg" alt="break-ui before and after at 320px">
+    <div class="reveal">
+      <h2>Worst-case data stopped breaking it</h2>
+      <ul><li>German compounds, Japanese, an unbreakable e-mail, a 404 image</li><li>Overflow 165px → 0 at 320px, 95px → 0 in RTL</li><li>Re-run anytime: <b>?data=worst</b> (dev only)</li></ul>
+    </div>
+  </section>
+  <section class="slide s-next">
+    <h2 class="reveal">Run it on your Mac</h2>
+    <ol class="reveal"><li><code>npm install && npm run dev</code></li><li>Open <code>localhost:5173/?data=worst</code> at 320px</li><li>Pick a hero: <code>git checkout prototype/hero</code></li><li>Build /jobs from <code>docs/issues/001–005</code></li></ol>
+  </section>
+</main>
+</div>
+<div class="deck-controls" id="count">1 / 6</div>
+<script>
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.currentSlide = 0;
+    this.stage = document.getElementById('deckStage');
+    this.count = document.getElementById('count');
+    this.setupStageScale(); this.setupKeyboardNav(); this.setupTouchNav(); this.setupWheel();
+    this.showSlide(Math.max(0, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+  }
+  setupStageScale() {
+    const scale = () => {
+      const f = Math.min(innerWidth / 1920, innerHeight / 1080);
+      this.stage.style.transform = `translate(${(innerWidth - 1920 * f) / 2}px, ${(innerHeight - 1080 * f) / 2}px) scale(${f})`;
+    };
+    scale(); addEventListener('resize', scale);
+  }
+  setupKeyboardNav() {
+    document.addEventListener('keydown', (e) => {
+      if (['ArrowRight', 'ArrowDown', ' ', 'PageDown'].includes(e.key)) { e.preventDefault(); this.showSlide(this.currentSlide + 1); }
+      if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.showSlide(this.currentSlide - 1); }
+      if (e.key === 'Home') this.showSlide(0);
+      if (e.key === 'End') this.showSlide(this.slides.length - 1);
+    });
+  }
+  setupTouchNav() {
+    let x = null;
+    addEventListener('touchstart', (e) => { x = e.touches[0].clientX; }, { passive: true });
+    addEventListener('touchend', (e) => { if (x === null) return; const dx = e.changedTouches[0].clientX - x; if (Math.abs(dx) > 40) this.showSlide(this.currentSlide + (dx < 0 ? 1 : -1)); x = null; });
+  }
+  setupWheel() {
+    let lock = false;
+    addEventListener('wheel', (e) => { if (lock || Math.abs(e.deltaY) < 30) return; lock = true; this.showSlide(this.currentSlide + (e.deltaY > 0 ? 1 : -1)); setTimeout(() => lock = false, 600); }, { passive: true });
+  }
+  showSlide(i) {
+    this.currentSlide = Math.max(0, Math.min(i, this.slides.length - 1));
+    this.slides.forEach((s, j) => { s.classList.toggle('active', j === this.currentSlide); s.classList.toggle('visible', j === this.currentSlide); });
+    this.count.textContent = `${this.currentSlide + 1} / ${this.slides.length}`;
+    history.replaceState(null, '', '#' + (this.currentSlide + 1));
+  }
+}
+new SlidePresentation();
+</script>
+</body>
+</html>
