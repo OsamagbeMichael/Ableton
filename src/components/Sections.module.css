@@ -26,12 +26,13 @@
 
 .photo {
   width: 100%;
+  color: var(--c-ink-2); /* alt text shows here if the image fails */
+  font-size: 14px;
   object-fit: cover;
   opacity: 0;
   transition: opacity 300ms var(--ease-out);
 }
 .photo[data-loaded='true'] { opacity: 1; }
-.photo { color: var(--c-ink-2); font-size: 14px; }
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .hero { padding: 0 var(--gutter) clamp(0px, 2.7vw, 39px); }

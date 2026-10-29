@@ -69,6 +69,4 @@ p { text-wrap: pretty; }
 }
 .skip-link:focus { top: 16px; }
 
-/* Reduced motion: keep fades and colour, drop movement (each module opts out of its transforms). */
-
 main:focus { outline: none; }
