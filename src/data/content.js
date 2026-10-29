@@ -1,5 +1,6 @@
 // All page content lives here, so the components stay presentational.
 // Photos: Pexels (free license), hot-linked and cropped through Pexels' CDN.
+// shortcut: hot-linked images depend on Pexels uptime; self-host them (e.g. vite-imagetools) before launch.
 
 const px = (id, w, h) => {
   const base = `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=${w}&h=${h}`;

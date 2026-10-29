@@ -43,6 +43,7 @@ export default function Header() {
     if (modal) headerRef.current?.querySelector(`[id="${mobileId}"] a`)?.focus();
   }, [open, mobileId]);
 
+  // shortcut: tuck, More menu and modal menu all live in Header; extract hooks when a second header variant appears.
   // Sticky second bar: scrolling down tucks the main bar away and leaves the
   // sub-nav pinned; any scroll up brings the main bar back.
   const [tucked, setTucked] = useState(false);

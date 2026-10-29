@@ -16,7 +16,7 @@ function Newsletter() {
   const [status, setStatus] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
-    // Practice project: nothing is sent anywhere.
+    // shortcut: fake submit, nothing is sent; wire to the e-mail provider (or remove the form) before launch.
     setStatus('Thanks! Check your inbox to confirm your subscription.');
     e.currentTarget.reset();
   };

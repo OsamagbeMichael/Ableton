@@ -3,6 +3,7 @@
 // never loads worst.js: the dev-only branch is removed at build time.
 import * as demo from './content.js';
 
+// shortcut: one mutable module object, fine for a client-only SPA; move to React context if this ever renders on the server.
 export const content = { ...demo };
 
 export function applyWorstCase(worst) {
